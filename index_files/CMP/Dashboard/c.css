@@ -1,0 +1,132 @@
+#AKCIJA_BTN {
+  display: block;
+  width: 200px;
+  height: 120px;
+  position: absolute;
+  bottom: 10px;
+  border-radius: 35px;
+  background-color: darkgray;
+  opacity: 0.67;
+}
+
+#LogOUT,
+#PostirajUpgrejd,
+#Refresch {
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border-radius: 35px;
+}
+
+#LogOUT {
+  background-color: #ff7f509e;
+  left: 0px;
+  bottom: 0px;
+}
+#PostirajUpgrejd {
+  background-color: aquamarine;
+  top: 50px;
+  right: 0px;
+}
+
+#Refresch {
+  background-color: #f5f5dcc4;
+  right: 0px;
+  bottom: 0px;
+}
+
+#Status_APP {
+  color: black;
+}
+#AKK_cod {
+  position: absolute;
+  top: 33px;
+  width: 100%;
+}
+
+.SELECTASCHI {
+  text-align: center;
+}
+
+#SECTOR_UPDEJT {
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-bottom: 55px;
+}
+
+#SECTOR_CR8 {
+  display: block;
+  margin: 25px;
+  margin-bottom: 14px;
+}
+#CR8_GROUP,
+#CR8_COD {
+  text-align: center;
+}
+
+#SWIITC_AKCIJA {
+  position: absolute;
+  bottom: 22px;
+  width: 100%;
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
