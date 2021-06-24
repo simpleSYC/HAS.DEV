@@ -218,20 +218,57 @@ function SEND_LICENCA(g, d) {
   }
   return d;
 }
-function ADD_NOW(G) {
-  for (i = 1; i < 11; i++) {
-    let tst = i + "--URED";
-    SYC_0000.child("GROUP/" + G + "/UREDI/" + i).set(tst);
+function Get_TAZE_M(a) {
+  let J = new Date().getMonth() + 1 - a;
+  return parseInt(J);
+}
+function Get_TAZE_G(a) {
+  let J = new Date().getUTCFullYear() - a;
+  return parseInt(J);
+}
+function cr8_uredi_OBJ(N) {
+  let Prazen_PRISET = {
+    FTO: { F_IME: false, F_SRC: false },
+    STS: {
+      IME: "Maschine #" + N,
+      OZNAKI: [
+        { SIMBOL: 0, TxT: "", VALUE: 50 },
+        { SIMBOL: 0, TxT: "", VALUE: 50 },
+        { SIMBOL: 0, TxT: "", VALUE: 50 },
+      ],
+      STATUS: 0,
+    },
+  };
+  let upd_txt = '{"' + Get_TAZE_G(0) + '":{},"' + Get_TAZE_G(1) + '":{}}';
+  let upd = JSON.parse(upd_txt);
+  for (let i = 1; i < 13; i++) {
+    upd[Get_TAZE_G(0)][i] = { 0: false };
   }
+
+  if (!Get_TAZE_M(1)) {
+    upd[Get_TAZE_G(1)][12] = { 0: false };
+  }
+
+  Prazen_PRISET["UPD"] = upd;
+
+  return Prazen_PRISET;
+}
+
+function ADD_NOW(G) {
+  let O = {};
+  for (let i = 1; i < 11; i++) {
+    O[i] = cr8_uredi_OBJ(i);
+  }
+  SYC_0000.child("GROUP/" + G + "/UREDI").set(O);
 }
 function UP_Scale(G) {
-  for (i = 11; i < 31; i++) {
-    let tst = i + "--URED";
-    SYC_0000.child("GROUP/" + G + "/UREDI/" + i).set(tst);
+  for (let i = 11; i < 31; i++) {
+    let I = "GROUP/" + G + "/UREDI/" + i;
+    SYC_0000.child(I).set(cr8_uredi_OBJ(i));
   }
 }
 function DOWN_Scale(G) {
-  for (i = 30; i > 10; i--) {
+  for (let i = 30; i > 10; i--) {
     SYC_0000.child("GROUP/" + G + "/UREDI/" + i).set(null);
   }
 }
